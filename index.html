@@ -456,6 +456,26 @@ nav.scrolled {
 .ticker-down { color: var(--red); }
 .ticker-arrow { font-size: 0.7rem; }
 
+/* ===== PAIN POINT ===== */
+#pain-point {
+  padding: 80px 6%;
+  background: linear-gradient(180deg, transparent 0%, rgba(201,168,76,0.04) 50%, transparent 100%);
+}
+.pain-questions p {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.pain-questions p:last-child { margin-bottom: 36px; }
+.pain-questions strong { color: var(--gold-light); }
+.pain-answer {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 1px;
+}
+
 /* ===== SECTION SHARED ===== */
 section {
   padding: 110px 5%;
@@ -1874,12 +1894,25 @@ footer::before {
   <div class="ticker-track" id="tickerTrack"></div>
 </div>
 
+<!-- PAIN POINT -->
+<section id="pain-point" class="text-center">
+  <div class="reveal">
+    <div class="pain-questions">
+      <p>נמאס לך לשבת מול גרפים כל היום?</p>
+      <p>נמאס לך לנתח דוחות כספיים שאתה לא מבין?</p>
+      <p>לא יכול לשמוע יותר את המושג <em>"נרות יפניים"</em>?</p>
+      <p>ואתה יודע שאפשר להרוויח <strong>הרבה</strong> יותר מ-10% בשנה?</p>
+    </div>
+    <p class="pain-answer">בשביל זה אנחנו כאן.</p>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section id="services">
   <div class="services-header text-center reveal">
     <span class="section-label">מה אנחנו מציעים</span>
     <h2 class="section-title">כל מה שצריך כדי <span class="accent">לסחור בפשטות</span></h2>
-    <p class="section-desc">תוכן איכותי, ניתוחים מעמיקים וקהילה חמה – הכל במקום אחד.</p>
+    <p class="section-desc">אני מפרסם את העסקאות שלי בזמן אמת. אתה פשוט מעתיק — אחד לאחד, בדיוק כמוני. בלי ניסיון. בלי ידע. רק לעקוב ולהרוויח.</p>
   </div>
   <div class="services-grid">
     <div class="service-card reveal reveal-delay-1" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.08">
