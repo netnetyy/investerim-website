@@ -1541,6 +1541,149 @@ footer::before {
   background: linear-gradient(to left, transparent, rgba(201,168,76,0.2));
 }
 
+/* ===== TEAM SECTION ===== */
+#team {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 50%, var(--bg) 100%);
+  position: relative;
+  overflow: hidden;
+}
+#team::before {
+  content: '';
+  position: absolute;
+  top: -200px; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.team-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.team-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,168,76,0.4);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 40px rgba(201,168,76,0.1);
+}
+.team-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.team-photo-placeholder {
+  width: 100%;
+  height: 240px;
+  background: linear-gradient(135deg, #0d0d20 0%, #12122a 60%, #0a1530 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.team-photo-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+}
+.team-photo-placeholder .photo-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px dashed rgba(201,168,76,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(201,168,76,0.4);
+  font-size: 2.4rem;
+  position: relative;
+  z-index: 1;
+  background: rgba(201,168,76,0.04);
+}
+.team-photo-placeholder .photo-label {
+  position: absolute;
+  bottom: 14px;
+  right: 0; left: 0;
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: rgba(201,168,76,0.35);
+  text-transform: uppercase;
+}
+.team-info {
+  padding: 28px 28px 32px;
+}
+.team-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 30px;
+  padding: 4px 14px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.team-role-badge::before {
+  content: '◆';
+  font-size: 0.5rem;
+}
+.team-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.team-name span {
+  color: var(--gold-light);
+}
+.team-desc {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+.team-fun-fact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,255,136,0.05);
+  border: 1px solid rgba(0,255,136,0.12);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: rgba(0,255,136,0.8);
+}
+.team-fun-fact::before {
+  content: '✦';
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+@media (max-width: 700px) {
+  .team-grid { grid-template-columns: 1fr; }
+  .team-name { font-size: 1.35rem; }
+}
+
 /* ===== GRADIENT MESH BG FOR HERO ===== */
 .hero-gradient-mesh {
   position: absolute;
@@ -1582,6 +1725,7 @@ footer::before {
     <li><a href="#hero">בית</a></li>
     <li><a href="#services">שירותים</a></li>
     <li><a href="#community">הקהילה</a></li>
+    <li><a href="#team">הצוות</a></li>
     <li><a href="#form-section">צור קשר</a></li>
     <li><a href="#form-section" class="nav-cta">הצטרף לקהילה</a></li>
   </ul>
@@ -1598,6 +1742,7 @@ footer::before {
   <a href="#hero" onclick="closeMenu()">בית</a>
   <a href="#services" onclick="closeMenu()">שירותים</a>
   <a href="#community" onclick="closeMenu()">הקהילה</a>
+  <a href="#team" onclick="closeMenu()">הצוות</a>
   <a href="#form-section" onclick="closeMenu()">צור קשר</a>
   <a href="#form-section" onclick="closeMenu()" style="color:var(--gold);font-weight:700;">הצטרף לקהילה ←</a>
 </div>
@@ -1608,8 +1753,8 @@ footer::before {
   <div class="hero-gradient-mesh"></div>
   <div class="hero-overlay"></div>
 
-  <!-- Bear vs Bull Fight Scene -->
-  <div class="bear-bull-scene">
+  <!-- Bear vs Bull Fight Scene - removed -->
+  <div class="bear-bull-scene" style="display:none!important">
     <svg viewBox="0 0 340 260" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <radialGradient id="bullFill" cx="50%" cy="50%" r="50%">
@@ -1869,6 +2014,51 @@ footer::before {
         <span class="community-cta-note"><span class="dot"></span>מקומות מוגבלים – ההרשמה פתוחה עכשיו</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- TEAM SECTION -->
+<section id="team">
+  <div class="section-line-decoration"></div>
+  <div class="text-center" style="margin-bottom:56px;">
+    <span class="section-label">MEET THE TEAM</span>
+    <h2 class="section-title">על <span class="accent">הצוות שלנו</span></h2>
+    <p class="section-desc" style="max-width:520px;margin:0 auto;">האנשים שמאחורי הסקירות, האסטרטגיות וההצלחות. מומחים אמיתיים עם ניסיון בשדה.</p>
+  </div>
+  <div class="team-grid">
+
+    <!-- CARD 1: ניב מוכתר -->
+    <div class="team-card reveal">
+      <div class="team-photo-placeholder">
+        <div class="photo-icon">👤</div>
+        <div class="photo-label">תמונה בקרוב</div>
+      </div>
+      <div class="team-info">
+        <div class="team-role-badge">מייסד הקהילה</div>
+        <h3 class="team-name">ניב <span>מוכתר</span></h3>
+        <p class="team-desc">
+          עוסק בשוק ההון ובמסחר במניות כבר 12 שנים. ניסיונו הרב והצלחותיו הבלתי מעורערות הפכו אותו למומחה בהגדלת תיקי מסחר — ללא כל מאמץ מצד הסוחר.
+        </p>
+        <div class="team-fun-fact">גם אחלה גבר.</div>
+      </div>
+    </div>
+
+    <!-- CARD 2: ליאור הרוש -->
+    <div class="team-card reveal reveal-delay-2">
+      <div class="team-photo-placeholder">
+        <div class="photo-icon">👤</div>
+        <div class="photo-label">תמונה בקרוב</div>
+      </div>
+      <div class="team-info">
+        <div class="team-role-badge">ראש הצוות המקצועי</div>
+        <h3 class="team-name">ליאור <span>הרוש</span></h3>
+        <p class="team-desc">
+          מנהל תיקי השקעות ומומחה ממדרגה ראשונה לכל תחומי שוק ההון והמאקרו כלכלה. האסטרטגיה שלו — מדויקת, חדה, ומוכחת.
+        </p>
+        <div class="team-fun-fact">גם שחקן כדורגל מצוין!</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
