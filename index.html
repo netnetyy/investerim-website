@@ -2492,14 +2492,19 @@ document.addEventListener('click', e => {
 
     const visible = Math.min(Math.ceil(revealCount), n);
 
-    candles.slice(0, visible).forEach((c, i) => {
+    const visibleCandles = candles.slice(0, visible);
+    const minP = visible > 0 ? Math.min(...visibleCandles.map(c => c.low))  - 3 : 0;
+    const maxP = visible > 0 ? Math.max(...visibleCandles.map(c => c.high)) + 3 : 100;
+    const priceRange = maxP - minP || 1;
+    const toY = v => pad + chartH - ((v - minP) / priceRange) * chartH;
+
+    visibleCandles.forEach((c, i) => {
       const isUp = c.close >= c.open;
       const color      = isUp ? '#00ff88' : '#ff3333';
       const colorDim   = isUp ? 'rgba(0,255,136,0.25)' : 'rgba(255,51,51,0.25)';
       const glowColor  = isUp ? 'rgba(0,255,136,0.7)' : 'rgba(255,51,51,0.6)';
 
       const x = i * gap + gap / 2;
-      const toY = v => pad + chartH - (v / 100) * chartH;
 
       const bodyTop    = toY(Math.max(c.open, c.close));
       const bodyBottom = toY(Math.min(c.open, c.close));
@@ -2543,7 +2548,6 @@ document.addEventListener('click', e => {
       const last = candles[visible - 1];
       const isUp = last.close >= last.open;
       const x = (visible - 1) * gap + gap / 2;
-      const toY = v => pad + chartH - (v / 100) * chartH;
       const dotY = toY(last.close);
       const dotColor = isUp ? '#00ff88' : '#ff3333';
 
