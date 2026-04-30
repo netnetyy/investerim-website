@@ -463,13 +463,13 @@ nav.scrolled {
 }
 .pain-q {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
-              transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translateX(60px);
+  transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .pain-q.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 .pain-questions p {
   font-size: clamp(1.8rem, 4vw, 2.8rem);
@@ -526,8 +526,14 @@ section {
 .services-flow {
   font-size: 1.15rem;
   line-height: 2.2;
+}
+.flow-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0;
   white-space: nowrap;
-  overflow-x: auto;
 }
 .flow-step {
   color: #fff;
@@ -1952,7 +1958,7 @@ footer::before {
     <p class="pain-q">לא רוצים להיות משועבדים למסכים?</p>
     <p class="pain-q">נמאס לכם לשבת לקרוא דוחות כספיים שאתם לא באמת מבינים?</p>
     <p class="pain-q">לא יכולים לשמוע יותר את המושג <em>"נרות יפניים"</em>?</p>
-    <p class="pain-q">ורוצים להרוויח — <strong>ובענק</strong></p>
+    <p class="pain-q">ורוצים להרוויח — <strong>ובענק</strong>?</p>
   </div>
   <p class="pain-answer pain-q">אנחנו כאן כדי לעשות את העבודה בשבילכם.</p>
 </section>
@@ -1963,7 +1969,9 @@ footer::before {
     <span class="section-label">מה אנחנו מציעים</span>
     <h2 class="section-title">כל מה שצריך כדי <span class="accent">לסחור בפשטות</span></h2>
     <p class="section-desc services-flow">
-      <span class="flow-step">רואים את העסקאות המפורסמות בקהילה</span><span class="flow-arrow">←</span><span class="flow-step">מעתיקים את הנתונים</span><span class="flow-arrow">←</span><span class="flow-step highlight">מרוויחים בגדול</span>
+      <span class="flow-line">
+        <span class="flow-step">רואים את העסקאות המפורסמות בקהילה</span><span class="flow-arrow">←</span><span class="flow-step">מעתיקים את הנתונים</span><span class="flow-arrow">←</span><span class="flow-step highlight">מרוויחים בגדול</span>
+      </span>
       <br><span class="flow-sub">ללא צורך בידע או ניסיון — עוקבים ומרוויחים.</span>
     </p>
   </div>
