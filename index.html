@@ -518,10 +518,35 @@ section {
 .section-title .accent { color: var(--gold-light); }
 
 .section-desc {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
+  color: rgba(200,200,220,0.85);
+  max-width: 620px;
+  line-height: 2;
+}
+.services-flow {
+  font-size: 1.15rem;
+  line-height: 2.2;
+}
+.flow-step {
+  color: #fff;
+  font-weight: 600;
+}
+.flow-step.highlight {
+  color: var(--gold-light);
+  font-weight: 700;
+}
+.flow-arrow {
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  margin: 0 6px;
+  opacity: 0.7;
+}
+.flow-sub {
+  display: inline-block;
+  margin-top: 8px;
   color: var(--text-muted);
-  max-width: 560px;
-  line-height: 1.85;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .text-center { text-align: center; }
@@ -1300,6 +1325,18 @@ footer::before {
 }
 .footer-bottom p { font-size: 0.8rem; color: rgba(120,120,160,0.7); }
 .footer-bottom a { color: var(--gold); text-decoration: none; }
+.footer-disclaimer {
+  text-align: center;
+  font-size: 0.72rem;
+  color: rgba(120,120,160,0.45);
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.03);
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
 
 /* ===== FLOATING BULL ===== */
 .bull-float {
@@ -1910,12 +1947,12 @@ footer::before {
 <!-- PAIN POINT -->
 <section id="pain-point" class="text-center pain-stagger">
   <div class="pain-questions">
-    <p class="pain-q">נמאס לך לשבת מול גרפים כל היום?</p>
-    <p class="pain-q">נמאס לך לנתח דוחות כספיים שאתה לא מבין?</p>
-    <p class="pain-q">לא יכול לשמוע יותר את המושג <em>"נרות יפניים"</em>?</p>
-    <p class="pain-q">ואתה יודע שאפשר להרוויח <strong>הרבה</strong> יותר מ-10% בשנה?</p>
+    <p class="pain-q">לא רוצים להיות משועבדים למסכים?</p>
+    <p class="pain-q">נמאס לכם לשבת לקרוא דוחות כספיים שאתם לא באמת מבינים?</p>
+    <p class="pain-q">לא יכולים לשמוע יותר את המושג <em>"נרות יפניים"</em>?</p>
+    <p class="pain-q">ורוצים להרוויח — <strong>ובענק</strong></p>
   </div>
-  <p class="pain-answer pain-q">בשביל זה אנחנו כאן.</p>
+  <p class="pain-answer pain-q">אנחנו כאן לעשות את העבודה בשבילכם.</p>
 </section>
 
 <!-- SERVICES -->
@@ -1923,7 +1960,14 @@ footer::before {
   <div class="services-header text-center reveal">
     <span class="section-label">מה אנחנו מציעים</span>
     <h2 class="section-title">כל מה שצריך כדי <span class="accent">לסחור בפשטות</span></h2>
-    <p class="section-desc">אני מפרסם את העסקאות שלי בזמן אמת. אתה פשוט מעתיק — אחד לאחד, בדיוק כמוני. בלי ניסיון. בלי ידע. רק לעקוב ולהרוויח.</p>
+    <p class="section-desc services-flow">
+      <span class="flow-step">רואים את העסקאות המפורסמות בקהילה</span>
+      <span class="flow-arrow">←</span>
+      <span class="flow-step">מעתיקים את הנתונים</span>
+      <span class="flow-arrow">←</span>
+      <span class="flow-step highlight">מרוויחים בגדול</span>
+      <br><span class="flow-sub">ללא צורך בידע או ניסיון — עוקבים ומרוויחים.</span>
+    </p>
   </div>
   <div class="services-grid">
     <div class="service-card reveal reveal-delay-1" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.08">
@@ -2210,6 +2254,7 @@ footer::before {
     <p>© 2025 INVESTERIM – כל הזכויות שמורות</p>
     <p>בנוי עם ❤ עבור משקיעים חכמים</p>
   </div>
+  <p class="footer-disclaimer">התכנים המפורסמים בקהילה אינם המלצה לביצוע פעולה. כל פעולה הנעשית ע"י המשקיע היא באחריותו האישית בלבד.</p>
 </footer>
 
 <script>
