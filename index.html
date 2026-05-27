@@ -2504,13 +2504,26 @@ document.querySelectorAll('.radio-opt').forEach(opt => {
 });
 
 // ===== FORM SUBMIT =====
-function submitForm(e) {
-  e.preventDefault();
-  const form = e.target;
-  let valid = true;
+// ===== CRM LEAD CAPTURE =====
+var CRM_API_URL = 'https://investrim-crm.vercel.app/api/leads';
+var CRM_API_KEY = 'investrim-demo-secret-2024';
 
-  ['fullName','email','phone'].forEach(id => {
-    const el = document.getElementById(id);
+function getUtmParams() {
+  var params = new URLSearchParams(window.location.search);
+  var utm = {};
+  if (params.get('utm_source'))   utm.utm_source   = params.get('utm_source');
+  if (params.get('utm_medium'))   utm.utm_medium   = params.get('utm_medium');
+  if (params.get('utm_campaign')) utm.utm_campaign = params.get('utm_campaign');
+  return utm;
+}
+
+async function submitForm(e) {
+  e.preventDefault();
+  var form = e.target;
+  var valid = true;
+
+  ['fullName','email','phone'].forEach(function(id) {
+    var el = document.getElementById(id);
     if (!el.value.trim()) {
       el.classList.add('error');
       valid = false;
@@ -2523,9 +2536,36 @@ function submitForm(e) {
   if (!form.querySelector('input[name="availability"]:checked')) valid = false;
 
   if (!valid) {
-    const firstError = form.querySelector('.error, input[name="experience"]');
+    var firstError = form.querySelector('.error, input[name="experience"]');
     firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
+  }
+
+  var btn = form.querySelector('.btn-submit');
+  btn.disabled = true;
+  btn.querySelector('span').textContent = 'שולח...';
+
+  var experience = (form.querySelector('input[name="experience"]:checked') || {}).value || '';
+  var availability = (form.querySelector('input[name="availability"]:checked') || {}).value || '';
+  var experienceLabels = { none: 'ללא ניסיון', beginner: 'מתחיל', intermediate: 'בינוני', advanced: 'מנוסה' };
+  var availabilityLabels = { morning: 'בוקר', afternoon: 'צהריים', evening: 'ערב', flexible: 'גמיש' };
+
+  var payload = Object.assign({
+    name:    document.getElementById('fullName').value.trim(),
+    email:   document.getElementById('email').value.trim(),
+    phone:   document.getElementById('phone').value.trim(),
+    source:  'website',
+    message: 'ניסיון: ' + (experienceLabels[experience] || experience) + ' | זמינות: ' + (availabilityLabels[availability] || availability),
+  }, getUtmParams());
+
+  try {
+    await fetch(CRM_API_URL, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + CRM_API_KEY },
+      body:    JSON.stringify(payload),
+    });
+  } catch (_) {
+    // fail silently — show success to user regardless
   }
 
   document.getElementById('leadForm').style.display = 'none';
